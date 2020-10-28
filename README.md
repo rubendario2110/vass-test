@@ -18,4 +18,4 @@ npm run build-docker
 
 ## Run Docker
 
-mom run start-docker
+npm run start-docker
