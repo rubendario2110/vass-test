@@ -1,4 +1,4 @@
-let SedesRepository = require("../repository/sedes");
+let CiudadRepository = require("../repository/ciudad");
 let jwt = require("jsonwebtoken");
 let config = require("../config");
 const log4js = require("log4js");
@@ -6,7 +6,7 @@ const resource = require("../resource/resource.json");
 log4js.configure(resource.configLog4js);
 const log = log4js.getLogger("app");
 
-class SedesService {
+class CiudadService {
   create(req) {
     return new Promise((resolve, reject) => {
       let token = req.headers["x-access-token"];
@@ -18,11 +18,11 @@ class SedesService {
           reject({ auth: false, message: "Failed to authenticate token." });
         }
       });
-      new SedesRepository()
-        .createSede(req.body)
+      new CiudadRepository()
+        .createCiudad(req.body)
         .then((data) => {
           log.debug(data);
-          resolve({ sede: "creada correctamente" });
+          resolve({ ciudad: "creada correctamente" });
         })
         .catch((error) => {
           log.error(error);
@@ -31,4 +31,4 @@ class SedesService {
     });
   }
 }
-module.exports = SedesService;
+module.exports = CiudadService;
