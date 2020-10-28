@@ -23,4 +23,15 @@ router.post("/register", (req, res) => {
       res.status(500).json(responseError);
     });
 });
+
+router.get("/userBySedes", (req, res) => {
+  new UserService()
+    .userBySede(req.body)
+    .then((response) => {
+      res.status(200).json(response);
+    })
+    .catch((responseError) => {
+      res.status(500).json(responseError);
+    });
+});
 module.exports = router;

@@ -41,5 +41,19 @@ class UserService {
         });
     });
   }
+  userBySede(req) {
+    return new Promise((resolve, reject) => {
+      new UsersRepository()
+        .getUserBySede(req)
+        .then((data) => {
+          log.debug(data);
+          resolve(data);
+        })
+        .catch((error) => {
+          log.error(error);
+          reject({ user: null });
+        });
+    });
+  }
 }
 module.exports = UserService;

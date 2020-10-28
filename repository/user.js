@@ -41,5 +41,22 @@ class UsersRepository {
         });
     });
   }
+
+  getUserBySede(user) {
+    return new Promise((resolve, reject) => {
+      userModel
+        .findOne({ where: { sedes_idsedes: user.sede } })
+        .then((data) => {
+          if (data === null) {
+            reject(null);
+          } else {
+            resolve(data);
+          }
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  }
 }
 module.exports = UsersRepository;
