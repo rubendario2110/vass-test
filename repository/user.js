@@ -31,13 +31,19 @@ class UsersRepository {
         sedes_idsedes: user.sede,
         ciudad_idciudad: user.ciudad,
       };
-      userModel
-        .create(json)
+      this.getUserById(user)
         .then(() => {
-          resolve({});
+          reject({});
         })
         .catch((error) => {
-          reject(error);
+          userModel
+            .create(json)
+            .then(() => {
+              resolve({});
+            })
+            .catch((error) => {
+              reject(error);
+            });
         });
     });
   }

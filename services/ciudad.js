@@ -11,10 +11,12 @@ class CiudadService {
     return new Promise((resolve, reject) => {
       let token = req.headers["x-access-token"];
       if (!token) {
+        log.error("No token provided.");
         reject({ auth: false, message: "No token provided." });
       }
       jwt.verify(token, config.secret, (err) => {
         if (err) {
+          log.error("Failed to authenticate token.")
           reject({ auth: false, message: "Failed to authenticate token." });
         }
       });
