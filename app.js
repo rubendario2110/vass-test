@@ -1,6 +1,7 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
+var cors = require('cors');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var users = require('./controllers/user');
@@ -12,6 +13,7 @@ log4js.configure(resource.configLog4js);
 const log = log4js.getLogger('app');
 
 var app = express();
+app.use(cors());
 app.use(express.json());
 app.use(users);
 app.use(sedes);

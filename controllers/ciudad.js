@@ -9,6 +9,7 @@ router.post("/registerCiudad", (req, res) => {
       res.status(200).json(response);
     })
     .catch((responseError) => {
+      console.log(responseError);
       res.status(500).json(responseError);
     });
 });
